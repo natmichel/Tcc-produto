@@ -18,6 +18,7 @@ class DesafioFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
+            'resposta_id' =>\App\Models\Resposta::factory(),
             'body' => fake()->text(),
             'dificuldade' => fake()->text()
         ];

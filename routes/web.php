@@ -9,14 +9,16 @@ Route::get('/', function () {
 });
 
 Route::get('/desafios', function(){
+    $desafios = Desafio::all();
     return view('desafios', [
-        'desafios' => Desafio::all()
+        'desafios' => $desafios,
     ]);
 });
 
 Route::get('/desafio/{id}', function($id){
-    $desafio = Arr::first(Desafio::all(), fn($desafio) => $desafio['id'] == $id);
-    
+    // $desafio = Arr::first(Desafio::all(), fn($desafio) => $desafio['id'] == $id);
+    $desafio = Desafio::find($id);
+
     return view('desafio', ['desafio' => $desafio]);
 });
 

@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('desafios', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignIdFor(\App\Models\Resposta::class);
-            $table->string('title');
-            $table->string('body');
-            $table->string('dificuldade');
+        Schema::create('respostas', function (Blueprint $table) {
+            $table->id();
+            $table->string('resposta_body');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('desafios');
+        Schema::dropIfExists('respostas');
     }
 };
