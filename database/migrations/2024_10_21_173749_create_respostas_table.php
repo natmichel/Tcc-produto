@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('respostas', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\Desafio::class)->constrained()->onUpdates('cascade')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Alternativa::class)->constrained()->onUpdates('cascade')->onDelete('cascade');
             $table->string('resposta_body');
             $table->timestamps();
         });

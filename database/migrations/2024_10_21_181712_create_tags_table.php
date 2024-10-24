@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->foreignIdFor(\App\Models\Desafio::class)->cascadeOnDelete();
             $table->timestamps();
         });
 
-        Schema::create('desafios_tag', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(\App\Models\Tag::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\Desafio::class)->constrained()->cascadeOnDelete();
-            $table->timestamps();
-        });
+        // Schema::create('desafios_tag', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignIdFor(\App\Models\Tag::class)->cascadeOnDelete();
+        //     $table->foreignIdFor(\App\Models\Desafio::class)->cascadeOnDelete();
+        //     $table->timestamps();
+        // });
     }
 
     /**

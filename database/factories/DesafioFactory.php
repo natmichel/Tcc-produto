@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\Alternativa;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Desafio>
  */
@@ -14,13 +14,12 @@ class DesafioFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+
+    public function definition(): array{
         return [
             'title' => fake()->jobTitle(),
-            'resposta_id' =>\App\Models\Resposta::factory(),
-            'body' => fake()->text(),
-            'dificuldade' => fake()->text()
+            'body' => fake()->realText(),
+            'dificuldade' => fake()->numberBetween(1, 3)
         ];
     }
 }

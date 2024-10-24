@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('desafios', function (Blueprint $table) {
+        Schema::create('alternativas', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('body');
-            // $$table->enum('dificuldade',['facil', 'intermediario', 'dificil']);
-            $table->integer('dificuldade');
+            $table->string('text');
+            $table->boolean('correta')->default(false);
+            $table->foreignIdFor(\App\Models\Desafio::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('desafios');
+        Schema::dropIfExists('alternativas');
     }
 };
